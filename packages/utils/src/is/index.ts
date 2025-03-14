@@ -1,0 +1,5 @@
+export * as isInCi from './is-in-ci'
+export * as isPlainObj from './is-plain-obj'
+export * as isRunning from './is-running'
+export * as isSSH from './is-ssh'
+export * as isStream from './is-stream'
