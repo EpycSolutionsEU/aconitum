@@ -23,21 +23,29 @@ pnpm add @aconitum/utils
 The package includes the following utility categories:
 
 - **Corn Magic**: Magic utilities for various purposes
+- **East Asian Width**: Utilities for handling East Asian character widths
+- **Emoji**: Regular expressions for detecting and working with emoji characters
 - **Environment**: Environment detection and configuration
 - **Git**: Git-related utilities including URL parsing
 - **In Range**: Check if a number is within a specified range
 - **is**: Various type checking utilities
   - isInCI: Check if code is running in a CI environment
+  - isInteractive: Check if a stream is interactive
   - isPlainObj: Check if a value is a plain object
   - isRunning: Check if a process is running
   - isSSH: Check if using an SSH connection
   - isStream: Check if a value is a stream
+  - isUnicodeSupported: Check if the terminal supports Unicode
+- **Mimic Function**: Copy properties from one function to another
 - **Normalize URL**: URL normalization utilities
 - **NPM Run Path**: Utilities for NPM run paths
+- **Onetime**: Create functions that can only be called once
 - **Parse Path/URL**: Path and URL parsing utilities
 - **Path Exists/Key**: Path existence checking and key utilities
 - **Protocols**: Protocol handling utilities
 - **Signals**: Signal handling utilities
+- **Signals Exit**: Register handlers for process exit signals
+- **String Width**: Calculate visual width of strings in terminal
 - **Strip Final Newline**: Remove final newline from strings
 - **Temp Directory/File**: Temporary directory and file utilities
 - **Time**: Time conversion and formatting utilities
@@ -45,7 +53,15 @@ The package includes the following utility categories:
 ## Usage
 
 ```typescript
-import { pathExists, isInRange, stripFinalNewline } from '@aconitum/utils';
+import { 
+  pathExists, 
+  isInRange, 
+  stripFinalNewline, 
+  stringWidth, 
+  isUnicodeSupported, 
+  onetime,
+  eastAsianWidth
+} from '@aconitum/utils';
 
 // Check if a path exists
 const exists = await pathExists('/path/to/file');
@@ -55,6 +71,22 @@ const inRange = isInRange(5, { min: 1, max: 10 });
 
 // Strip final newline from a string
 const cleaned = stripFinalNewline('Hello World\n');
+
+// Calculate the visual width of a string (handles emoji, CJK characters, etc.)
+const width = stringWidth('Hello 👋 世界');
+
+// Check if the terminal supports Unicode
+if (isUnicodeSupported()) {
+  console.log('Terminal supports Unicode characters');
+}
+
+// Create a function that can only be called once
+const initialize = onetime(() => {
+  console.log('This will only be logged once');
+});
+
+// Get the width of East Asian characters
+const charWidth = eastAsianWidth('世', { ambiguousAsWide: true });
 ```
 
 ## Contributing
