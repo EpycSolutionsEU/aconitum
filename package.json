@@ -1,11 +1,31 @@
 {
-    "name": "aconitum",
-    "version": "0.0.0",
-    "description": "Librarys for EpycSolutions",
-    "author": "EpycSolutions",
-    "license": "EpycSolutions Public Source License",
-    "dependencies": {
-        "@types/node": "22.13.10",
-        "typescript": "5.8.2"
-    }
+  "name": "aconitum",
+  "version": "0.0.0",
+  "description": "A comprehensive library completepack for EpycSolutions",
+  "type": "module",
+  "keywords": [
+    "epycsolutions",
+    "library",
+    "typescript"
+  ],
+  "author": "EpycSolutions",
+  "license": "EpycSolutions Public Source License",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epycsolutions/aconitum.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "22.13.10",
+    "@types/jest": "29.5.14",
+    "@typescript-eslint/eslint-plugin": "8.26.1",
+    "@typescript-eslint/parser": "8.26.1",
+    "typescript": "5.8.2",
+    "jest": "29.7.0",
+    "ts-jest": "29.2.6",
+    "eslint": "9.22.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }

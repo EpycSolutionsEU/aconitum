@@ -17,10 +17,6 @@ The repository includes the following packages:
 ## Installation
 
 ```bash
-npm install
-
-&&
-
 pnpm install
 ```
 
@@ -39,7 +35,7 @@ pnpm add @aconitum/[package-name]
 To work on this project:
 
 1. Clone the repository
-2. Install dependencies with `npm install`
+2. Install dependencies with `pnpm install`
 3. Navigate to the package you want to work on
 4. Make your changes
 5. Build and test as needed
@@ -68,7 +64,7 @@ The project is overseen by the **Code of Conduct Committee**, which is responsib
 
 Aconitum is maintained by a dedicated team of contributors:
 
-- **David Stüwe** - Lead Developer and Maintainer
 - **EpycSolutions Team** - Core Development and Support
+    - **David Stüwe** - Lead Developer and Maintainer
 
-We appreciate all contributions from the community. Contributors are recognized in the respective package's package.json files.
+We appreciate all contributions from the community. Contributors are recognized in the respective package's package.json files, if a contributor is working on more than one package, they will be listed inside of this README.md file.
