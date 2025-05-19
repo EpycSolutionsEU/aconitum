@@ -20,10 +20,12 @@
  * 
  * Ambiguous width characters can be narrow or wide depending on context.
  * 
- * @param x - The Unicode code point to check
- * @returns True if the character has the 'Ambiguous' property, false otherwise
+ * @param { number } x - The Unicode code point to check
+ * 
+ * @since Introduces in v0.1.1 
+ * @returns { boolean } True if the character has the 'Ambiguous' property, false otherwise
  */
-export function isAmbiguous(x: number): boolean {
+function isAmbiguous(x: number): boolean {
 	return x === 0xA1
 		|| x === 0xA4
 		|| x === 0xA7
@@ -238,7 +240,7 @@ export function isAmbiguous(x: number): boolean {
 		|| x >= 0x1F19B && x <= 0x1F1AC
 		|| x >= 0xE0100 && x <= 0xE01EF
 		|| x >= 0xF0000 && x <= 0xFFFFD
-		|| x >= 0x100000 && x <= 0x10FFFD;
+		|| x >= 0x100000 && x <= 0x10FFFD
 }
 
 /**
@@ -246,13 +248,15 @@ export function isAmbiguous(x: number): boolean {
  * 
  * Fullwidth characters are always displayed as wide.
  * 
- * @param x - The Unicode code point to check
- * @returns True if the character has the 'Fullwidth' property, false otherwise
+ * @param { number } x - The Unicode code point to check
+ * 
+ * @since Introduces in v0.1.1 
+ * @returns { boolean } True if the character has the 'Fullwidth' property, false otherwise
  */
-export function isFullWidth(x: number): boolean {
+function isFullWidth(x: number): boolean {
 	return x === 0x3000
 		|| x >= 0xFF01 && x <= 0xFF60
-		|| x >= 0xFFE0 && x <= 0xFFE6;
+		|| x >= 0xFFE0 && x <= 0xFFE6
 }
 
 /**
@@ -261,10 +265,12 @@ export function isFullWidth(x: number): boolean {
  * Wide characters are always displayed as wide, typically used for East Asian scripts
  * and symbols like emoji.
  * 
- * @param x - The Unicode code point to check
- * @returns True if the character has the 'Wide' property, false otherwise
+ * @param { number } x - The Unicode code point to check
+ * 
+ * @since Introduces in v0.1.1 
+ * @returns { boolean } True if the character has the 'Wide' property, false otherwise
  */
-export function isWide(x: number): boolean {
+function isWide(x: number): boolean {
 	return x >= 0x1100 && x <= 0x115F
 		|| x === 0x231A
 		|| x === 0x231B
@@ -400,7 +406,7 @@ export function isWide(x: number): boolean {
 		|| x >= 0x1FADF && x <= 0x1FAE9
 		|| x >= 0x1FAF0 && x <= 0x1FAF8
 		|| x >= 0x20000 && x <= 0x2FFFD
-		|| x >= 0x30000 && x <= 0x3FFFD;
+		|| x >= 0x30000 && x <= 0x3FFFD
 }
 
 /**
@@ -418,15 +424,17 @@ export function isWide(x: number): boolean {
  * - 'wide': Characters that are always displayed as wide
  * - 'neutral': Characters that do not have a specific width property
  * 
- * @param x - The Unicode code point to check
- * @returns The East Asian Width category as a string
+ * @param { number } x - The Unicode code point to check
+ * 
+ * @since Introduces in v0.1.1
+ * @returns { 'ambiguous' | 'fullwidth' | 'halfwidth' | 'narrow' | 'wide' | 'neutral' } The East Asian Width category as a string
  */
-export function getCategory(x: number): 'ambiguous' | 'fullwidth' | 'halfwidth' | 'narrow' | 'wide' | 'neutral' {
-	if (isAmbiguous(x)) return 'ambiguous';
+function getCategory(x: number): 'ambiguous' | 'fullwidth' | 'halfwidth' | 'narrow' | 'wide' | 'neutral' {
+	if(isAmbiguous(x)) return 'ambiguous'
 
-	if (isFullWidth(x)) return 'fullwidth';
+	if(isFullWidth(x)) return 'fullwidth'
 
-	if (
+	if(
 		x === 0x20A9
 		|| x >= 0xFF61 && x <= 0xFFBE
 		|| x >= 0xFFC2 && x <= 0xFFC7
@@ -435,10 +443,10 @@ export function getCategory(x: number): 'ambiguous' | 'fullwidth' | 'halfwidth' 
 		|| x >= 0xFFDA && x <= 0xFFDC
 		|| x >= 0xFFE8 && x <= 0xFFEE
 	) {
-		return 'halfwidth';
+		return 'halfwidth'
 	}
 
-	if (
+	if(
 		x >= 0x20 && x <= 0x7E
 		|| x === 0xA2
 		|| x === 0xA3
@@ -450,10 +458,18 @@ export function getCategory(x: number): 'ambiguous' | 'fullwidth' | 'halfwidth' 
 		|| x === 0x2985
 		|| x === 0x2986
 	) {
-		return 'narrow';
+		return 'narrow'
 	}
 
-	if (isWide(x)) return 'wide';
+	if(isWide(x)) return 'wide'
 
-	return 'neutral';
+	return 'neutral'
+}
+
+
+export {
+    isAmbiguous,
+    isFullWidth,
+    isWide,
+    getCategory
 }
